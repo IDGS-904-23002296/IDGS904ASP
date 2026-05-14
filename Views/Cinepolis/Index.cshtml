@@ -1,0 +1,58 @@
+﻿@model IDGS904ASP.Models.Boletos
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="container" style="background-color: #3b5998; color: white; padding: 20px; border-radius: 10px;">
+    <h2 class="text-center">Cinépolis: La Capital del Cine</h2>
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-md-6 border">
+                <h3>Entradas</h3>
+                <div class="form-group">
+                    <label>Nombre:</label>
+                    @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Cantidad Compradores:</label>
+                    @Html.TextBoxFor(m => m.CantidadCompradores, new { @class = "form-control", type = "number" })
+                </div>
+                <div class="form-group">
+                    <label>Tarjeta Cineco:</label><br />
+                    @Html.RadioButtonFor(m => m.TarjetaCineco, true) Sí
+                    @Html.RadioButtonFor(m => m.TarjetaCineco, false) No
+                </div>
+                <div class="form-group">
+                    <label>Cantidad de Boletas:</label>
+                    @Html.TextBoxFor(m => m.CantidadBoletas, new { @class = "form-control", type = "number" })
+                </div>
+            </div>
+
+            <div class="col-md-6 border">
+                <h3>Salidas</h3>
+                <div class="form-group">
+                    <label>Valor a Pagar:</label>
+                    <input type="text" class="form-control" value="$@Model.TotalAPagar" readonly />
+                </div>
+                @if (!string.IsNullOrEmpty(Model.MensajeError))
+                {
+                    <div class="alert alert-danger">@Model.MensajeError</div>
+                }
+            </div>
+        </div>
+
+        <div class="row mt-3 text-center">
+            <div class="col-12">
+                <h3>Acciones</h3>
+                <button type="submit" class="btn btn-success">Procesar</button>
+                <a href="@Url.Action("Index")" class="btn btn-danger">Salir</a>
+            </div>
+        </div>
+    }
+</div>
