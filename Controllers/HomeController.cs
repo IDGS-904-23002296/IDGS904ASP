@@ -10,7 +10,7 @@ namespace IDGS904ASP.Controllers
     public class HomeController : Controller
     {
         //public JsonResult Index() 
-        //{
+        //{ 
         //    //return Content("Jorge Uriel ASP.NET");
         //    var alumno1 = new Persona() { Nombre = "Juan", Edad = 32, Empleado = true };
         //    var alumno2 = new Persona() { Nombre = "Mario", Edad = 23, Empleado = false };
