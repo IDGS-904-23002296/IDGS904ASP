@@ -13,7 +13,7 @@ namespace IDGS904ASP.Models
 
         public void CalcularProceso()
         {
-            double precioBoleta = 12000;
+            double precioBoleta = 12;
             int maximoPermitido = CantidadCompradores * 7;
 
             if (CantidadBoletas > maximoPermitido)

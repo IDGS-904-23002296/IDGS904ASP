@@ -1,19 +1,52 @@
 ﻿@model IDGS904ASP.Models.Boletos
-
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<style>
+    .cinepolis-container {
+        position: relative;
+        background-color: #2D3195;
+        color: white;
+        padding: 20px;
+        padding-top: 140px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+        z-index: 1;
+        overflow: hidden;
+    }
 
-<div class="container" style="background-color: #3b5998; color: white; padding: 20px; border-radius: 10px;">
-    <h2 class="text-center">Cinépolis: La Capital del Cine</h2>
+    .cinepolis-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('@Url.Content("~/Content/images/cine.jpg")');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 900px;
+        background-color: rgba(0, 0, 0, 0.4);
+        background-blend-mode: overlay;
+        z-index: -1;
+    }
+
+    .border-custom {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 15px;
+        border-radius: 5px;
+    }
+</style>
+
+<h2>Index</h2>
+<div class="container cinepolis-container"
     <hr />
 
     @using (Html.BeginForm())
     {
         <div class="row">
-            <div class="col-md-6 border">
+            <div class="col-md-6 border-custom">
                 <h3>Entradas</h3>
                 <div class="form-group">
                     <label>Nombre:</label>
@@ -23,7 +56,7 @@
                     <label>Cantidad Compradores:</label>
                     @Html.TextBoxFor(m => m.CantidadCompradores, new { @class = "form-control", type = "number" })
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label>Tarjeta Cineco:</label><br />
                     @Html.RadioButtonFor(m => m.TarjetaCineco, true) Sí
                     @Html.RadioButtonFor(m => m.TarjetaCineco, false) No
@@ -34,7 +67,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6 border">
+            <div class="col-md-6 border-custom">
                 <h3>Salidas</h3>
                 <div class="form-group">
                     <label>Valor a Pagar:</label>
@@ -42,12 +75,12 @@
                 </div>
                 @if (!string.IsNullOrEmpty(Model.MensajeError))
                 {
-                    <div class="alert alert-danger">@Model.MensajeError</div>
+                    <div class="alert alert-danger mt-3">@Model.MensajeError</div>
                 }
             </div>
         </div>
 
-        <div class="row mt-3 text-center">
+        <div class="row mt-4 text-center">
             <div class="col-12">
                 <h3>Acciones</h3>
                 <button type="submit" class="btn btn-success">Procesar</button>
