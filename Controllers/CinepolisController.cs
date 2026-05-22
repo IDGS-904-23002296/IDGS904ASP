@@ -8,7 +8,7 @@ using IDGS904ASP.Models;
 namespace IDGS904ASP.Controllers
 {
     public class CinepolisController : Controller
-    {
+    { 
         public ActionResult Index()
         {
             return View(new Boletos());

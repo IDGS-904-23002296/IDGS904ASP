@@ -17,7 +17,7 @@ namespace IDGS904ASP.Models
             int maximoPermitido = CantidadCompradores * 7;
 
             if (CantidadBoletas > maximoPermitido)
-            {
+            { 
                 MensajeError = $"No se pueden comprar más de 7 boletas por persona (Máximo: {maximoPermitido}).";
                 TotalAPagar = 0;
                 return;
